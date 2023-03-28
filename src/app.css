@@ -1,6 +1,61 @@
 @import '@nativescript/theme/css/core.css';
 @import '@nativescript/theme/css/default.css';
 
-Button.-primary {
-  font-size: 18;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Page {
+  background-color: black;
+}
+
+.space-title {
+  color: white;
+  font-size: 50;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 0;
+  margin-left: 10;
+}
+
+.space-tickets-available {
+  background-color: rgb(51, 198.9, 89.25);
+  color: white;
+  margin-top: 20;
+  border-radius: 20;
+  height: 35;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.space-box-details {
+  background-color: white;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+}
+
+.space-box-details-image {
+  border-radius: 20;
+}
+
+.space-box-details-title {
+  font-weight: bold;
+  font-size: 15;
+}
+
+.space-box-details-subtitle {
+  font-size: 12;
+  color: rgb(51, 198.9, 89.25);
+}
+
+.planet-title {
+  font-weight: bold;
+  font-size: 50;
+  text-align: center;
+}
+
+.planet-details {
+  text-align: center;
+  font-size: 15;
+  color: #c5c5c5;
 }

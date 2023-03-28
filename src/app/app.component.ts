@@ -1,7 +1,12 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ns-app',
-  templateUrl: './app.component.html',
+  selector: 'app-name',
+  template: `
+    <GridLayout backgroundColor="black">
+      <!-- <app-earth backgroundColor="blue"></app-earth> -->
+      <page-router-outlet></page-router-outlet>
+    </GridLayout>
+  `,
 })
 export class AppComponent {}

@@ -1,16 +1,38 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
-import { NativeScriptModule } from '@nativescript/angular'
+import { NO_ERRORS_SCHEMA, NgModule } from "@angular/core";
+import {
+  NativeScriptCommonModule,
+  NativeScriptModule,
+  NativeScriptRouterModule,
+  registerElement,
+} from "@nativescript/angular";
+import { CanvasModule } from "@nativescript/canvas/angular";
 
-import { AppRoutingModule } from './app-routing.module'
-import { AppComponent } from './app.component'
-import { ItemsComponent } from './item/items.component'
-import { ItemDetailComponent } from './item/item-detail.component'
+registerElement("Canvas", () => require("@nativescript/canvas").Canvas);
+
+import { AppComponent } from "./app.component";
+
+import { SpaceViewComponent } from "./space-view.component";
+import { EarthViewComponent } from "./earth-view.component";
+import { EarthComponent } from "./earth.component";
 
 @NgModule({
   bootstrap: [AppComponent],
-  imports: [NativeScriptModule, AppRoutingModule],
-  declarations: [AppComponent, ItemsComponent, ItemDetailComponent],
-  providers: [],
+  declarations: [
+    AppComponent,
+    SpaceViewComponent,
+    EarthViewComponent,
+    EarthComponent,
+  ],
+  imports: [
+    CanvasModule,
+    NativeScriptModule,
+    NativeScriptCommonModule,
+    NativeScriptRouterModule.forRoot([
+      { path: "", redirectTo: "/space-view", pathMatch: "full" },
+      { path: "space-view", component: SpaceViewComponent },
+      { path: "earth-view", component: EarthViewComponent },
+    ]),
+  ],
   schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppModule {}

@@ -15,6 +15,8 @@ import { SpaceViewComponent } from "./space-view.component";
 import { EarthViewComponent } from "./earth-view.component";
 import { EarthComponent } from "./earth.component";
 
+registerElement("app-earth", () => EarthComponent);
+
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [

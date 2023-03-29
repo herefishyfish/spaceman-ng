@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-name',
   template: `
     <GridLayout backgroundColor="black">
-      <!-- <app-earth backgroundColor="blue"></app-earth> -->
-      <page-router-outlet></page-router-outlet>
+      <page-router-outlet actionBarVisibility="never"></page-router-outlet>
     </GridLayout>
   `,
 })

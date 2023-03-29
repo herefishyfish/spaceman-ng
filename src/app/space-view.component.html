@@ -1,0 +1,25 @@
+<GridLayout rows="3*, 2*, 2*" marginTop="60" backgroundColor="black">
+    <app-earth row="0" [parentPage]="page" sharedTransitionTag="earth"></app-earth>
+    <Image src="~/assets/SpaceMan.png" stretch="aspectFill" row="0" rowSpan="2" sharedTransitionTag="spaceman"></Image>
+    <GridLayout rows="160,auto,auto,auto,*" row="0" rowSpan="2" marginLeft="10" sharedTransitionTag="title">
+      <Label row="1" class="space-title">SPACE</Label>
+      <Label row="2" class="space-title">TRAVEL</Label>
+      <Button row="3" class="space-tickets-available" width="55%" horizontalAlignment="left" (tap)="openModal($event)">
+        TICKETS AVAILABLE
+      </Button>
+    </GridLayout>
+    <StackLayout row="2" class="space-box-details" sharedTransitionTag="infobox">
+      <StackLayout orientation="vertical" margin="15">
+        <StackLayout orientation="horizontal">
+          <ContentView width="150" height="100" boxShadow="0 0 1 1 rgba(0,0,0,.6)" borderRadius="20">
+            <Image src="~/assets/Astronaut.jpg" stretch="aspectFill" width="150" height="100" class="space-box-details-image"></Image>
+          </ContentView>
+          <StackLayout orientation="vertical" margin="15 0 0 10" verticalAlignment="top">
+            <Label class="space-box-details-title">98% RATING</Label>
+            <Label text="FIND OUT MORE" class="space-box-details-subtitle">FIND OUT MORE</Label>
+          </StackLayout>
+        </StackLayout>
+      <Label textWrap="true" margin="10 0 0 0">{{descriptionText}}</Label>
+    </StackLayout>
+  </StackLayout>
+</GridLayout>

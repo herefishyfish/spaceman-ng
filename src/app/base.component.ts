@@ -4,11 +4,7 @@ import { Page } from '@nativescript/core';
 
 @Directive()
 export abstract class BaseComponent {
-  protected router = inject(RouterExtensions);
+  router = inject(RouterExtensions);
+  page = inject(Page);
 
-  constructor(
-    private page: Page
-  ) {
-    this.page.actionBarHidden = true;
-  }
 }

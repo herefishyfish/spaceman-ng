@@ -1,13 +1,19 @@
 import { Component, inject } from '@angular/core';
+import { RouterExtensions } from '@nativescript/angular';
 import { PageTransition, SharedTransition, SharedTransitionConfig, Screen, Page } from '@nativescript/core';
-import { BaseComponent } from './base.component';
 
 @Component({
   selector: 'app-space-view',
   templateUrl: `space-view.component.html`
 })
-export class SpaceViewComponent extends BaseComponent {
+export class SpaceViewComponent {
+  page = inject(Page);
+  router = inject(RouterExtensions);
   descriptionText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna...';
+
+  constructor() {
+    this.page.reusable = false;
+  }
 
   openModal(event) {
     const config: SharedTransitionConfig = {
@@ -22,7 +28,7 @@ export class SpaceViewComponent extends BaseComponent {
         // use nice linear duration on Android
         duration: global.isAndroid ? 800 : null,
         // use custom spring on iOS
-        spring: { tension: 60, friction: 8, mass: 4 },
+        // spring: { tension: 60, friction: 8, mass: 4 },
         opacity: 1,
         sharedTransitionTags: {
           spaceman: {

@@ -10,6 +10,7 @@ import { CanvasModule } from "@nativescript/canvas/angular";
 registerElement("Canvas", () => require("@nativescript/canvas").Canvas);
 
 import { AppComponent } from "./app.component";
+import { SnapshotService } from "./snapshot.service";
 
 import { SpaceViewComponent } from "./space-view.component";
 import { EarthViewComponent } from "./earth-view.component";
@@ -34,6 +35,9 @@ registerElement("app-earth", () => EarthComponent);
       { path: "space-view", component: SpaceViewComponent },
       { path: "earth-view", component: EarthViewComponent },
     ]),
+  ],
+  providers: [
+    SnapshotService,
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

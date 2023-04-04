@@ -1,12 +1,15 @@
-import { Component, Input, SimpleChanges, OnChanges } from "@angular/core";
+import {
+  Component,
+  Input,
+  SimpleChanges,
+  OnChanges,
+  inject,
+} from "@angular/core";
 import { Canvas } from "@nativescript/canvas";
 import * as THREE from "three";
-import {
-  CSSType,
-  GridLayout,
-  Page,
-} from "@nativescript/core";
+import { CSSType, GridLayout, ImageSource, Page } from "@nativescript/core";
 import "@nativescript/canvas-polyfill";
+import { SnapshotService } from "./snapshot.service";
 
 const earthGeometry = new THREE.SphereGeometry(0.6, 32, 32);
 const earthMaterial = new THREE.MeshPhongMaterial({
@@ -20,11 +23,11 @@ const earthMaterial = new THREE.MeshPhongMaterial({
 const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
 
 const cloudGeometry = new THREE.SphereGeometry(0.63, 32, 32);
-const cloudMetarial = new THREE.MeshStandardMaterial({
+const cloudMaterial = new THREE.MeshStandardMaterial({
   map: new THREE.TextureLoader().load("~/assets/texture/earthCloud.png"),
   transparent: true,
 });
-const cloudMesh = new THREE.Mesh(cloudGeometry, cloudMetarial);
+const cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
 
 const ambientlight = new THREE.AmbientLight(0xffffff, 0.2);
 const pointLight = new THREE.PointLight(0xffffff, 1);
@@ -42,6 +45,7 @@ scene.add(Helper);
 @Component({
   selector: "app-earth",
   template: `
+    <Image stretch="aspectFit" [src]="snap.imageSource"></Image>
     <Canvas (ready)="onCanvasReady($event)"></Canvas>
   `,
 })
@@ -57,52 +61,44 @@ export class EarthComponent extends GridLayout implements OnChanges {
   private _animationFrameId: number | null;
   private _init = false;
 
+  constructor(public snap: SnapshotService) {
+    super();
+    this._animationFrameId = null;
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if (!this._init && changes.parentPage.currentValue) {
       this._init = true;
       this.parentPage.on("navigatingFrom", () => {
-        console.log("navigatingFrom");
         if (typeof this._animationFrameId === "number") {
           cancelAnimationFrame(this._animationFrameId);
           this._animationFrameId = null;
         }
+
+        this.snap.imageSource = this.canvas.snapshot();
       });
       this.parentPage.on("navigatedTo", () => {
-        console.log("navigatedTo");
         if (this._animationFrameId === null) {
-          setTimeout(() => {
-            if (this.canvas) {
-              this.setup();
-            }
-            this._animationFrameId = requestAnimationFrame(
-              this.renderAnimation
-            );
-          });
+          if (this.canvas) {
+            this.setup();
+          }
+          this._animationFrameId = requestAnimationFrame(this.renderAnimation);
+
+          this.snap.imageSource = this.canvas.snapshot();
         }
       });
     }
   }
 
-  onWindowResize() {
-    console.log("onWindowResize");
-    this.camera.aspect = this.width / this.height;
-    this.camera.updateProjectionMatrix();
-    console.log(this.width, this.height);
-
-    this.renderer.setSize(this.width, this.height);
-  }
-
   onCanvasReady(args) {
-    setTimeout(() => {
-      this.canvas = args?.object as Canvas;
-      this.setup();
-      window.addEventListener("resize", this.onWindowResize);
-    })
+    this.canvas = args?.object as Canvas;
+
+    this.setup();
   }
 
   renderAnimation = () => {
     earthMesh.rotation.y -= 0.0015;
-    cloudMesh.rotation.y += 0.0005;
+    cloudMesh.rotation.y -= 0.0005;
     this.renderer.render(scene, this.camera);
 
     this._animationFrameId = requestAnimationFrame(this.renderAnimation);

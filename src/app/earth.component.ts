@@ -45,8 +45,8 @@ scene.add(Helper);
 @Component({
   selector: "app-earth",
   template: `
-    <Image stretch="aspectFit" [src]="snap.imageSource"></Image>
-    <Canvas (ready)="onCanvasReady($event)"></Canvas>
+    <Image sharedTransitionTag="earth-canvas-img" stretch="aspectFill" [src]="snap.imageSource"></Image>
+    <Canvas sharedTransitionTag="earth-canvas" (ready)="onCanvasReady($event)"></Canvas>
   `,
 })
 export class EarthComponent extends GridLayout implements OnChanges {
@@ -67,6 +67,9 @@ export class EarthComponent extends GridLayout implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    if(this.canvas) {
+      this.snap.imageSource = this.canvas.snapshot();
+    }
     if (!this._init && changes.parentPage.currentValue) {
       this._init = true;
       this.parentPage.on("navigatingFrom", () => {

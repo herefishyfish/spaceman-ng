@@ -18,6 +18,7 @@ export class SpaceViewComponent {
   openModal(event) {
     const config: SharedTransitionConfig = {
       pageStart: {
+
         x: -Screen.mainScreen.widthDIPs,
         y: 0,
         // Try commenting above values and uncommenting these...
@@ -26,9 +27,9 @@ export class SpaceViewComponent {
       },
       pageEnd: {
         // use nice linear duration on Android
-        duration: global.isAndroid ? 800 : null,
+        duration: global.isAndroid ? 800 : 250,
         // use custom spring on iOS
-        // spring: { tension: 60, friction: 8, mass: 4 },
+        spring: { tension: 60, friction: 8, mass: 4 },
         opacity: 1,
         sharedTransitionTags: {
           spaceman: {
@@ -50,7 +51,7 @@ export class SpaceViewComponent {
         },
       },
       pageReturn: {
-        duration: 600,
+        duration: 250,
         x: -Screen.mainScreen.widthDIPs,
         y: 0,
         opacity: 0,

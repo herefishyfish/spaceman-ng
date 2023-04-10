@@ -1354,15 +1354,15 @@
     "@nativescript/zone-js" "^3.0.0"
     tslib "^2.3.0"
 
-"@nativescript/canvas-media@2.0.0-alpha.9":
-  version "2.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/@nativescript/canvas-media/-/canvas-media-2.0.0-alpha.9.tgz#71c996eace15d65c093a1f177fe225412c114280"
-  integrity sha512-+QO8GH6cKlZpbb8OtRYsknuP6xnvlakxLQbtTh1F3LpBGAJfLNCJOxzXQZEfRmsbx8VmAtClTwEF2zOuZ1CWpg==
+"@nativescript/canvas-media@2.0.0-alpha.15":
+  version "2.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/@nativescript/canvas-media/-/canvas-media-2.0.0-alpha.15.tgz#773d51ca1df49dd841156e6d4afbae8634be8662"
+  integrity sha512-jVeKoY7c88mHjeogDL4d7mwkLHLi4i5ANAE0e0/WR++woP0Y7SvMdt6D7h8cAh40FwOIH2/kqhXlC++yfKm0+A==
 
-"@nativescript/canvas-polyfill@2.0.0-alpha.9":
-  version "2.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/@nativescript/canvas-polyfill/-/canvas-polyfill-2.0.0-alpha.9.tgz#f1e8985066cf9dfa1ae18e503632ae905b7b377f"
-  integrity sha512-Bw0T7tDm16Nwn5Z3L/+BIoi0RyCx4mBm1ahg9xUFsD5rI/hxunhYTGQ5/p78i+9henOfTx/9jh+FMJLWL1mNBA==
+"@nativescript/canvas-polyfill@2.0.0-alpha.15":
+  version "2.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/@nativescript/canvas-polyfill/-/canvas-polyfill-2.0.0-alpha.15.tgz#b90f517a8740991aee9bb75213c197cb3d59df8c"
+  integrity sha512-CmBQ7yRVIdLUIGhtQisglfKME1SZdkKQzhWlCUPxpGWxX9TvV6FMhe2TrBjvvRCdUGhRv4Fn90lMksmCksCA0A==
   dependencies:
     query-selector "2.0.0"
     xmldom "~0.6.0"
@@ -1374,17 +1374,17 @@
   dependencies:
     xmldom "~0.6.0"
 
-"@nativescript/canvas-three@2.0.0-alpha.9":
-  version "2.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/@nativescript/canvas-three/-/canvas-three-2.0.0-alpha.9.tgz#e7edecc77924a1c58dce1b18d673127f03e1405e"
-  integrity sha512-mvYW2fjGwlxq31D8hlUUI1A2aXCt8utrUytBrEqnKvQWmtwKoHjH58RTbUs1e/SdOaEiOXHwEdfzWzb6gdt3fw==
+"@nativescript/canvas-three@2.0.0-alpha.15":
+  version "2.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/@nativescript/canvas-three/-/canvas-three-2.0.0-alpha.15.tgz#7cbde5d871fe3125c5be883be4581fa034b0efa1"
+  integrity sha512-/ft7/c80E9Pzjp0zTZfwcj2JQcXqW73l7/hFN5FzJA9eLsTcj8aeNXmLMWyNVlxSr+AbAhhZwDH3pTHbQVdhPg==
   dependencies:
     "@nativescript/canvas-polyfill" alpha
 
-"@nativescript/canvas@2.0.0-alpha.9":
-  version "2.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/@nativescript/canvas/-/canvas-2.0.0-alpha.9.tgz#a163d7b827d7a7c68532f0f2ed0eccc3798f4913"
-  integrity sha512-aLIDo1P2QxfZftUZNQ9f0+LH0PYlUCivnBva9+JXb+nfDpq5WCSvvytgvrSKYmqH/BKchuTZ4IkI45cSV2jcCw==
+"@nativescript/canvas@2.0.0-alpha.15":
+  version "2.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/@nativescript/canvas/-/canvas-2.0.0-alpha.15.tgz#c00b5334ef5bbddc649852d56c46880337afd4f9"
+  integrity sha512-Vwwd5n/FVzKGGFdvQxVUuYI2q2FzWQj+E+BzW3D266yeH5aF3/bBODAgdL5UJAR4UvF3akvxoecOPE0lge61+g==
   dependencies:
     xmldom "~0.6.0"
 
@@ -1407,6 +1407,11 @@
   dependencies:
     glob "^7.1.0"
     mkdirp "^1.0.4"
+
+"@nativescript/ios@8.5.1-dev.0":
+  version "8.5.1-dev.0"
+  resolved "https://registry.yarnpkg.com/@nativescript/ios/-/ios-8.5.1-dev.0.tgz#ec99dea60c066a37d79bdd99ad412ff6bdd53eb8"
+  integrity sha512-gCYwCkCBLZZayQhvbuebyOrVsNddtgbnC6eOdolUqE3IfMAmd7BcvO4P6s5jPZWJUzpe041odqTkPsLizFnJ0g==
 
 "@nativescript/tailwind@^2.0.1":
   version "2.0.1"
